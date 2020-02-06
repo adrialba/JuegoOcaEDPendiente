@@ -6,12 +6,11 @@ import java.util.List;
 public class Tablero {
 
     private final List<Casilla> casillas;
-    private final int numCasillas;
+    private final static int NUMCASILLAS = 63;
 
     public Tablero() {
-        this.numCasillas = 63;
         this.casillas = new ArrayList<>();
-        for (int i = 0; i < numCasillas; i++) {
+        for (int i = 0; i < NUMCASILLAS; i++) {
             this.casillas.add(new Casilla(i + 1));
         }
         casillas.set(8, new CasillaOca(9, 5));
@@ -34,8 +33,8 @@ public class Tablero {
 
         int numCasilla = ficha.getPosicion() + numDado;
 
-        if (numCasilla > numCasillas) {
-            numCasilla = (numCasillas - ((ficha.getPosicion() + numDado) - numCasillas));
+        if (numCasilla > NUMCASILLAS) {
+            numCasilla = (NUMCASILLAS - ((ficha.getPosicion() + numDado) - NUMCASILLAS));
         }
         casillas.get(numCasilla - 1).posaFicha(ficha);
     }
